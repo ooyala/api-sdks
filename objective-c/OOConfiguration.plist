@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>defaultKeySetName</key>
+	<string>exampleSet1</string>
+	<key>keySets</key>
+	<dict>
+		<key>exampleSet1</key>
+		<dict>
+			<key>APIKey</key>
+			<string></string>
+			<key>secretKey</key>
+			<string></string>
+		</dict>
+		<key>exampleSet2</key>
+		<dict>
+			<key>APIKey</key>
+			<string></string>
+			<key>secretKey</key>
+			<string></string>
+		</dict>
+	</dict>
+</dict>
+</plist>

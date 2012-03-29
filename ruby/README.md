@@ -1,0 +1,25 @@
+The Ruby SDK is a client class for our V2 API. The approach is very simple. It  
+allows you to do GET, POST, PUT, PATCH and DELETE requests to our API by simply 
+specifying the path to the API you want to hit and depending of the call, a Hash 
+with parameters and Hash containing the body of the request.
+
+By specifying a Hash object to represent the JSON data you want to send, you can 
+make calls very fast and easily. First you need to create an Ooyala::API object 
+by passing your V2 API keys like this:
+
+    api = Ooyala::API.new("<api key>", "<secret key>"})
+  
+Now lets get all the assets under the "Funny dogs" label:
+
+    parameters = {:where => "labels INCLUDES 'Funny dogs'"}
+  
+    assets = api.get("assets", parameters)["items"]
+  
+Now that we have our results on the assets ArrayList, lets print them out to the console.
+
+    puts "Printing assets in the 'Funny dogs' label..."
+    assets.each do |asset|
+      puts "#{asset["embed_code"]} - #{asset["name"]}"
+    end
+
+It's that easy to work with this SDK!

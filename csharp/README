@@ -1,0 +1,24 @@
+The C# SDK is a client class for our V2 API. The approach is very simple. It  allows you to do GET, POST, PUT, PATCH and DELETE requests to our API by simply 
+specifying the path to the API you want to hit and depending of the call, a Dictionary with parameters and hash containing the body of the request.
+
+By specifying a Hashtable object to represent the JSON data you want to send, you can make calls very fast and easily. First you need to create an OoyalaAPI object by passing your V2 API keys like this:
+
+    OoyalaAPI api = new OoyalaAPI("<api key>", "<secret key>");
+  
+Now lets get all the assets under the "Funny dogs" label:
+
+    Dictionary<String, String> parameters = new Dictionary<String, String>();
+    parameters.Add("where", "labels INCLUDES 'Funny dogs'");
+  
+    ArrayList assets = (ArrayList)api.get("assets", parameters)["items"];
+  
+Now that we have our results on the assets ArrayList, lets print them out to the console.
+
+    Console.WriteLine("Printing assets in the 'Funny dogs' label...");
+    foreach(Hashtable asset in assets){
+      Console.WriteLine(asset["embed_code"].ToString() + " - " + asset["name"].ToString());
+    }
+
+It's that easy to work with this SDK!
+
+We use Json.NET to parse and encode JSON. Please visit http://james.newtonking.com/pages/json-net.aspx for more information on supported classes when creating your body Hashtable.

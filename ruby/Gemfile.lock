@@ -1,0 +1,22 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.6.5)
+    mime-types (1.17.2)
+    multi_json (1.1.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rr (1.0.4)
+    simplecov (0.6.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json (~> 1.6.5)
+  rest-client (~> 1.6.7)
+  rr (~> 1.0.4)
+  simplecov (~> 0.6.1)
