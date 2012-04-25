@@ -44,7 +44,7 @@
  *      DIRECT DAMAGES INCURRED UP TO MAXIMUM AMOUNT OF FIFTY DOLLARS ($50).
  */
 
-define('OOYALA_API_DEFAULT_CACHE_BASE_URL', 'https://cdn.api.ooyala.com');
+define('OOYALA_API_DEFAULT_CACHE_BASE_URL', 'http://cdn.api.ooyala.com');
 define('OOYALA_API_DEFAULT_BASE_URL', 'https://api.ooyala.com');
 define('OOYALA_API_DEFAULT_EXPIRATION_WINDOW', 15);
 define('OOYALA_API_ROUND_UP_TIME', 300);
@@ -88,7 +88,7 @@ class OoyalaApi
 
     /**
      * Holds the cache base URL where requests are going to be made to.
-     * Defaults to https://cdn.api.ooyala.com.
+     * Defaults to http://cdn.api.ooyala.com.
      *
      * @var string
      */
@@ -138,7 +138,8 @@ class OoyalaApi
         $this->httpRequest = new OoyalaHttpRequest(array(
             'shouldFollowLocation' => true,
             'contentType' => 'application/json',
-            'curlOptions' => array(CURLOPT_SSL_VERIFYPEER => false)));
+            'curlOptions' => array(CURLOPT_SSL_VERIFYPEER => false,
+                                   CURLOPT_SSL_VERIFYHOST => false)));
     }
 
     /**
