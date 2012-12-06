@@ -385,7 +385,6 @@ namespace Ooyala.API
 		/// <returns>
 		/// A string containing the signature to be used in the V2 API request.
 		/// </returns>
-		private string generateRequestSignature(string HTTPMethod, String path, String[] sortedParameterKeys, Dictionary<String,String> parameters, String body){
 			var stringToSign = this.secretKey + HTTPMethod + path;
 			
 			for (int i = 0; i < sortedParameterKeys.Length; i++) {
@@ -396,6 +395,8 @@ namespace Ooyala.API
 			
 			var sha256 = new SHA256Managed();
 			byte[] digest = sha256.ComputeHash(Encoding.Default.GetBytes(stringToSign));
+        internal string generateRequestSignature(string HTTPMethod, String path, String[] sortedParameterKeys, Dictionary<String, String> parameters, String body)
+        {
             string signedInput = Convert.ToBase64String(digest);
 			
 			//Removing the trailing = signs
