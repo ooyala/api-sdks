@@ -413,7 +413,9 @@ class OoyalaHttpRequest
         }
         if(array_key_exists('payload', $options) && strlen($options['payload'])) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $options['payload']);
-        }
+        } else {
+    		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: 0'));
+		}
         curl_setopt_array($ch, $options['curlOptions']);
 
         $response = curl_exec($ch);
