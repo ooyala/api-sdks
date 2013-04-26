@@ -1,5 +1,7 @@
 import unittest
 import json
+import sys
+sys.path.append("..")
 from api import OoyalaAPI
 
 class TestOoyalaAPI(unittest.TestCase):
@@ -56,3 +58,14 @@ class TestOoyalaAPI(unittest.TestCase):
     
         # Remove channel and video assets
         self.assertTrue(self.api.delete('assets/%s' % video_id))
+
+    def runTest(self):
+        self.test_get()
+        self.test_post()
+        self.test_patch()
+        self.test_put()
+
+if __name__ == "__main__":
+    test = TestOoyalaAPI()
+    test.setUp()
+    test.runTest()
