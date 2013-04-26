@@ -70,7 +70,7 @@ class OoyalaAPI(object):
         # Convert the body to JSON format
         json_body = ''
         if (body is not None):
-            json_body = json.dumps(body)
+            json_body = json.dumps(body) if type(body) is not str else body
 
         url = self.build_path_with_authentication_params(http_method, path, params, json_body)
         if url is None:
