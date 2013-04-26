@@ -27,8 +27,8 @@ logging.basicConfig(format='',level=logging.INFO)
 
 class OoyalaAPI(object):
     def __init__(self, 
-                secret_key,
                 api_key,
+                secret_key,
                 base_url=DEFAULT_BASE_URL,
                 expiration=DEFAULT_EXPIRATION_WINDOW):
         """OoyalaAPI Constructor
@@ -36,8 +36,8 @@ class OoyalaAPI(object):
         Type signature:
             (str, str, str:DEFAULT_BASE_URL, int:DEFAULT_EXPIRATION_WINDOW) -> OoyalaAPI
         Parameters:
-            secret_key - The secret key
             api_key    - The API key
+            secret_key - The secret key
             base_url   - the url's base
             expiration - the expiration window, in seconds
         Example:
