@@ -22,6 +22,7 @@ DEFAULT_EXPIRATION_WINDOW = 15
 DEFAULT_ROUND_UP_TIME = 300
 API_VERSION = 'v2'
 DEFAULT_BASE_URL = 'api.ooyala.com'
+DEFAULT_CACHE_BASE_URL = 'cdn-api.ooyala.com'
 
 logging.basicConfig(format='',level=logging.INFO)
 
@@ -30,6 +31,7 @@ class OoyalaAPI(object):
                 api_key,
                 secret_key,
                 base_url=DEFAULT_BASE_URL,
+                cache_base_url=DEFAULT_CACHE_BASE_URL,
                 expiration=DEFAULT_EXPIRATION_WINDOW):
         """OoyalaAPI Constructor
         
@@ -46,6 +48,7 @@ class OoyalaAPI(object):
         self._secret_key = secret_key
         self._api_key = api_key
         self._base_url = base_url
+        self._cache_base_url = cache_base_url
         self._expiration_window = expiration
         self._response_headers = [()]
 
@@ -75,8 +78,9 @@ class OoyalaAPI(object):
         url = self.build_path_with_authentication_params(http_method, path, params, json_body)
         if url is None:
             return None
-
-        connection = httplib.HTTPSConnection(self.base_url)
+        
+        base_url = self.base_url if http_method != 'GET' else self.cache_base_url
+        connection = httplib.HTTPSConnection(base_url)
 
         #hack needed when a PUT request has an empty body
         headers = {}
@@ -318,6 +322,33 @@ class OoyalaAPI(object):
         self._base_url = value
 
     base_url = property(get_base_url, set_base_url)
+    
+    def get_cache_base_url(self):
+        """Cache base url getter.
+            
+            Type signature:
+            () -> str
+            Example:
+            api = OoyalaAPI(...)
+            print 'the cache base url is ', api.cache_base_url
+            """
+        return self._cache_base_url
+    
+    def set_cache_base_url(self, value):
+        """Cache base url setter.
+            
+            Type signature:
+            (str) -> None
+            Parameters:
+            value - the url's base to be set
+            Example:
+            api = OoyalaAPI(...)
+            api.base_url = "cache.api.ooyala.com"
+            print 'the new url's base is ', api.cache_base_url
+            """
+        self._cache_base_url = value
+    
+    cache_base_url = property(get_cache_base_url, set_cache_base_url)
 
     def get_expiration_window(self): return self._expiration_window
     def set_expiration_window(self, value): self._expiration_window = value
