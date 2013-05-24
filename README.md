@@ -1,7 +1,7 @@
 Deprecation notice!
 ===================
 
-We have decided to split the SDKs in to their own repositories. As of June 1st 2013, all development for this SDKs will continue in the following locations:
+We have decided to split the SDKs in to their own repositories. As of June 1st 2013, all development for these SDKs will continue in the following locations:
 
 
 - [Ruby](https://github.com/ooyala/ruby-v2-sdk "Ruby SDK")
